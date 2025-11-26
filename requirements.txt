@@ -1,9 +1,9 @@
 asgiref==3.11.0
 Django==5.2.8
+django-filter==25.2
 djangorestframework==3.16.1
 drf-yasg==1.21.11
 inflection==0.5.1
-mysqlclient==2.2.7
 packaging==25.0
 python-dotenv==1.2.1
 pytz==2025.2
@@ -11,3 +11,12 @@ PyYAML==6.0.3
 sqlparse==0.5.3
 tzdata==2025.2
 uritemplate==4.2.0
+
+# Base de datos PostgreSQL
+psycopg2-binary==2.9.9
+PyMySQL==1.0.5
+# Para despliegue
+dj-database-url==1.3.0
+gunicorn
+whitenoise
+

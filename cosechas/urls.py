@@ -1,14 +1,11 @@
-from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-
-from .views import CultivoViewSet, CosechaViewSet
+from .views import CosechaViewSet, LoteViewSet
 
 router = DefaultRouter()
-router.register("cultivos", CultivoViewSet)
-router.register("cosechas", CosechaViewSet)
+router.register(r'cosechas', CosechaViewSet, basename='cosechas')
+router.register(r'lotes', LoteViewSet, basename='lotes')
 
-urlpatterns = [
-    path("", include(router.urls)),
-]
+urlpatterns = router.urls
+
 
 

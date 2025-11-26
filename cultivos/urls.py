@@ -7,6 +7,4 @@ router.register(r'cultivos', CultivoViewSet, basename='cultivo')
 router.register(r'variedades', VariedadViewSet, basename='variedad')
 router.register(r'producciones', ProduccionViewSet, basename='produccion')
 
-urlpatterns = [
-    path('', include(router.urls)),
-]
+urlpatterns = router.urls

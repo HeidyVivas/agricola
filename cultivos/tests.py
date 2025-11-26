@@ -1,6 +1,7 @@
 from django.test import TestCase
 
 # Create your tests here.
+<<<<<<< HEAD
 from rest_framework.test import APITestCase
 from rest_framework import status
 from django.urls import reverse
@@ -48,3 +49,5 @@ class CultivosAPITest(APITestCase):
         # debe incluir el cultivo creado
         ids = [d['cultivo_id'] for d in data]
         self.assertIn(self.cult.id, ids)
+=======
+>>>>>>> perdidas-samuel

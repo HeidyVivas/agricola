@@ -14,18 +14,40 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import permissions
 
-from rest_framework.routers import DefaultRouter
-from cosechas.views import CosechaViewSet
+# Swagger
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
-router = DefaultRouter()
-router.register(r'cosechas', CosechaViewSet, basename='cosechas')
+schema_view = get_schema_view(
+    openapi.Info(
+        title="API Agroapp",
+        default_version='v1',
+        description="Documentación oficial del proyecto agrícola con Django REST Framework",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contacto@agroapp.com"),
+        license=openapi.License(name="MIT License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
+    # Admin
     path('admin/', admin.site.urls),
-    path('api/', include('cosechas.urls')),
-]
 
+    # SWAGGER
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc-ui'),
+    path('swagger.json/', schema_view.without_ui(cache_timeout=0), name='swagger-json'),
+
+    # APIS por aplicaciones
+    path('api/cultivos/', include('cultivos.urls')),
+    path('api/cosechas/', include('cosechas.urls')),
+    #path('api/lotes/', include('cosechas.urls_lotes')),  # si lo separas
+    path('api/perdidas/', include('perdidas.urls')),
+    path('api/reportes/', include('reportes.urls')),
+]

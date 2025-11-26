@@ -1,3 +1,4 @@
+
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -24,3 +25,4 @@ class CosechaViewSet(ModelViewSet):
     def promedio(self, request):
         promedio = Cosecha.objects.all().aggregate(Avg("cantidad"))["cantidad__avg"]
         return Response({"promedio_cosecha_kg": promedio})
+
