@@ -5,6 +5,11 @@ API backend desarrollada con Django y Django REST Framework para gestionar culti
 
 ---
 
+## 🧑‍💻 Autor y licencia
+- Autores: Heidy Vivas, Laura Sofia Fonseca, Samuel Castro 
+
+---
+
 ## 📌 Resumen
 AgroApp permite:
 - CRUD de cultivos, cosechas y pérdidas.
@@ -128,11 +133,5 @@ curl "http://127.0.0.1:8000/api/reportes/indicadores/?inicio=2024-01-01&fin=2024
 - Abrir issues para bugs o mejoras.
 - Crear pull requests desde ramas con pruebas y descripción clara.
 
----
 
-## 🧑‍💻 Autor y licencia
-- Autor: Alicia — AgroApp Developer  
-- Licencia: MIT
-
----
 
