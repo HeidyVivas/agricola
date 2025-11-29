@@ -16,20 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import permissions
-from django.http import HttpResponse
-
-def home(request):
-    return HttpResponse("API funcionando correctamente!")
-
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-    TokenVerifyView
-)
-# Swagger
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -46,8 +35,10 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     # Admin
-	path('', home), 
     path('admin/', admin.site.urls),
+
+    # AUTH (JWT)
+    path('api/auth/', include('accounts.urls')),
 
     # SWAGGER
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-ui'),
@@ -57,10 +48,6 @@ urlpatterns = [
     # APIS por aplicaciones
     path('api/cultivos/', include('cultivos.urls')),
     path('api/cosechas/', include('cosechas.urls')),
-	path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-	path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
-    #path('api/lotes/', include('cosechas.urls_lotes')),  # si lo separas
     path('api/perdidas/', include('perdidas.urls')),
     path('api/reportes/', include('reportes.urls')),
 ]

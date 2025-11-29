@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cosechas',
     'perdidas',
     'reportes',
+	'accounts',
 ]
 
 # Middlewares
@@ -122,6 +123,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+		
         # si deseas seguir soportando SessionAuth:
         # 'rest_framework.authentication.SessionAuthentication',
     ),
