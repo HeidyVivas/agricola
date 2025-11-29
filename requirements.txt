@@ -13,7 +13,6 @@ python-decouple==3.8
 python-dotenv==1.2.1
 pytz==2025.2
 PyYAML==6.0.3
-rest-framework-simplejwt==0.0.2
 sqlparse==0.5.4
 tzdata==2025.2
 uritemplate==4.2.0
