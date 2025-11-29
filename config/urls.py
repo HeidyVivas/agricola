@@ -16,11 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import permissions
-
-# Swagger
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -39,6 +37,9 @@ urlpatterns = [
     # Admin
     path('admin/', admin.site.urls),
 
+    # AUTH (JWT)
+    path('api/auth/', include('accounts.urls')),
+
     # SWAGGER
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc-ui'),
@@ -47,7 +48,6 @@ urlpatterns = [
     # APIS por aplicaciones
     path('api/cultivos/', include('cultivos.urls')),
     path('api/cosechas/', include('cosechas.urls')),
-    #path('api/lotes/', include('cosechas.urls_lotes')),  # si lo separas
     path('api/perdidas/', include('perdidas.urls')),
     path('api/reportes/', include('reportes.urls')),
 ]

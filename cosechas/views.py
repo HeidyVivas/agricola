@@ -3,11 +3,17 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
+
 from django.db.models import Avg
 
 from .models import Cultivo, Cosecha
 from .serializers import CultivoSerializer, CosechaSerializer
 
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
+
+class MiVista(APIView):
+    permission_classes = [IsAuthenticated]
 
 class CultivoViewSet(ModelViewSet):
     queryset = Cultivo.objects.all()
