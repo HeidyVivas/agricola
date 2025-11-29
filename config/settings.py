@@ -21,7 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "insecure-key")
 # DEBUG = os.getenv("DEBUG", "False") == "True"
 DEBUG = "True"
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.onrender.com',   # permite cualquier subdominio de Render
+]
 
 # Aplicaciones instaladas
 INSTALLED_APPS = [
@@ -132,4 +136,14 @@ REST_FRAMEWORK = {
     )
 }
    
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+        }
+    }
+}
