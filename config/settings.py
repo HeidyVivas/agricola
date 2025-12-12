@@ -82,24 +82,18 @@ TEMPLATES = [
     },
 ]
 
-# Base de datos
+# Base de datos 
 DATABASES = {
     "default": {
-        "ENGINE": config("DB_ENGINE", default="django.db.backends.mysql"),
-        "NAME": config("DB_NAME", default="agricola_db"),
-        "USER": config("DB_USER", default="root"),
-        "PASSWORD": config("DB_PASSWORD", default=""),
-        "HOST": config("DB_HOST", default="localhost"),
-        "PORT": config("DB_PORT", default="3306"),
-        "OPTIONS": {
-            "init_command": config(
-                "DB_OPTIONS_INIT_COMMAND",
-                default="SET sql_mode='STRICT_TRANS_TABLES'"
-            ),
-            "charset": config("DB_OPTIONS_CHARSET", default="utf8mb4"),
-        },
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "citas_crytownbee",
+        "USER": "citas_crytownbee",
+        "PASSWORD": "6fc7fde39065b5305fb948befbe766f3c4760d37",
+        "HOST": "1aesln.h.filess.io",
+        "PORT": "5432",
     }
 }
+
 
 # Validación de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
